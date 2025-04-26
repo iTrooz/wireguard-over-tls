@@ -1,0 +1,9 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: {{ include "deployment.fullname" $ }}-https-redirect
+  namespace: {{ .Release.Namespace }}
+spec:
+  redirectScheme:
+    scheme: https
+    permanent: true

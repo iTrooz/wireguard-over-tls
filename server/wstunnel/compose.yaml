@@ -1,0 +1,13 @@
+services:
+  app:
+    image: wstunnel
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        INSTALL_CMD: "cargo install --git https://github.com/erebe/wstunnel"
+    restart: unless-stopped
+    network_mode: host
+    command: server ws://0.0.0.0:9134 --restrict-to 127.0.0.1:51820
+    ports:
+      - "9134:9134"

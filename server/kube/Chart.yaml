@@ -1,0 +1,9 @@
+apiVersion: v2
+name: ext-redirect
+description: Redirect HTTP/TLS traffic on a specific hostname to a port on a given node
+
+type: application
+
+version: 0.1.0
+
+appVersion: "1.16.0"

@@ -1,0 +1,17 @@
+node_name: mynode_a # Node on which the wstunnel server is running
+redirect_dst: your_server_public_ip:9134 # Where kube will redirect (wstunnel server)
+
+ingress:
+  enabled: true
+  className: ""
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt
+  hosts:
+    - host: vpn.example.com # The domain name where wstunnel traffic will be sent
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
+  tls:
+   - secretName: vpn.example.com-tls
+     hosts:
+       - vpn.example.com

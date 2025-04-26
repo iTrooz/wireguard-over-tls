@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "deployment.fullname" $ }}
+spec:
+  nodeSelector:
+    kubernetes.io/hostname: {{ .Values.node_name }}
+  selector:
+    matchLabels: {app: {{ include "deployment.fullname" $ }}}
+  template:
+    metadata:
+      annotations:
+        checksum/configmap: {{ include (print $.Template.BasePath "/configmap.yaml") . | sha256sum }}
+      labels: {app: {{ include "deployment.fullname" $ }}}
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:stable-alpine
+        volumeMounts:
+        - name: cfg
+          mountPath: /etc/nginx/nginx.conf
+          subPath: nginx.conf
+        ports:
+        - containerPort: 80
+      volumes:
+      - name: cfg
+        configMap:
+          name: {{ include "deployment.fullname" $ }}

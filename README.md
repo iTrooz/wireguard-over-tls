@@ -1,8 +1,7 @@
-Example of how to put Wireguard over TLS
-Technologies:
-- Kubernetes (server)
-- wstunnel (TLS layer)
+Example of how to connect to a Wireguard server (peer) over TLS
 
+Technologies used:
+- [wstunnel](https://github.com/erebe/wstunnel) (TLS layer)
 
 # Installation
 

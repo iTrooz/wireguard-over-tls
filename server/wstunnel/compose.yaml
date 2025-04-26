@@ -9,5 +9,3 @@ services:
     restart: unless-stopped
     network_mode: host
     command: server ws://0.0.0.0:9134 --restrict-to 127.0.0.1:51820
-    ports:
-      - "9134:9134"

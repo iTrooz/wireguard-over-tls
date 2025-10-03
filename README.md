@@ -24,4 +24,4 @@ This repository handles the case where the Wireguard server is running on a node
 ## Client
 First, you need to install `wstunnel` on your client: `cargo install --git https://github.com/erebe/wstunnel` (or check their releases).
 
-Then, you need to edit your wg-quick configuration, according to [the following example](client/wgcon-tls.conf). (Do not forget to change the wstunnel endpoint in `PostUp` !)
+Then, you need to edit your wg-quick configuration, according to [the following example](client/wgcon-tls.conf). (Do not forget to change the wstunnel endpoint in `PreUp` !)
